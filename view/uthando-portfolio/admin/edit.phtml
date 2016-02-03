@@ -1,0 +1,59 @@
+<?php $this->headTitle('Edit Portfolio Item') ?>
+<?php $this->layout()->pageTitle = $this->translate('Edit Portfolio Item');?>
+
+<?php $this->placeholder('header-buttons')->captureStart();?>
+<button type="submit" form="form-portfolio" data-toggle="tooltip" title="Save" class="btn btn-primary">
+    <i class="fa fa-save"></i>
+</button>
+<a href="<?=$this->url('admin/portfolio');?>" type="submit" data-toggle="tooltip" title="<?=$this->translate('Cancel');?>" class="btn btn-default">
+    <i class="fa fa-reply"></i>
+</a>
+<?php $this->placeholder('header-buttons')->captureEnd();?>
+
+<?php $this->form->setAttributes([
+    'method' => 'post',
+    'id' => 'form-portfolio',
+    'action' => $this->url('admin/portfolio/edit', [
+        'id' => $this->model->getPortfolioId(),
+    ]),
+]); ?>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i> <?=$this->translate('Edit Item');?></h3>
+    </div>
+    <div class="panel-body">
+        <?=$this->form($this->form);?>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('button[name=portfolio-image-button]').on('click', function() {
+            var uploadDialog = bootbox.dialog({
+                message: '<i class="fa fa-spinner fa-spin"></i> Loading',
+                title: "Upload Image",
+                show: false,
+                buttons: {
+                    default: {
+                        label: "Close",
+                        className: "btn-default",
+                        callback: function (e) {
+                            if (admin.upload && admin.upload.status) {
+                                $('#portfolio-image').val(admin.upload.image.name);
+                            }
+                        }
+                    }
+                }
+            });
+
+            uploadDialog.on('show.bs.modal', function () {
+                $(this).find('.modal-body').load('<?=$this->url('admin/uploader', [
+                    'action'    => 'upload-form',
+                ]);?>');
+            });
+
+            uploadDialog.modal('show');
+        });
+    });
+</script>

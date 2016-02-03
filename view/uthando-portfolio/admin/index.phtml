@@ -1,0 +1,42 @@
+<?php $this->headTitle('Portfolio') ?>
+<?php $this->layout()->pageTitle = $this->translate('Portfolio');?>
+
+<?php $this->placeholder('header-buttons')->captureStart();?>
+    <a href="<?=$this->url('admin/portfolio/edit', [
+        'action' => 'add'
+    ]);?>" type="submit" form="form-portfolio" data-toggle="tooltip" title="<?=$this->translate('Add Item');?>" class="btn btn-primary">
+        <i class="fa fa-plus"></i>
+    </a>
+<?php $this->placeholder('header-buttons')->captureEnd();?>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-list"></i> <?=$this->translate('Portfolio List');?></h3>
+        </div>
+        <div class="panel-body">
+            <?=$this->partial('uthando-admin/partial/search', [
+                'name'			=> 'portfolio',
+                'searchInputs'	=> [
+                    $this->translate('Image') => 'image',
+                    $this->translate('Tags') => 'tags',
+                ],
+            ]);?>
+        </div>
+        <div id="table-portfolio" class="admin-table">
+            <?=$this->partial('uthando-portfolio/admin/list', [
+                'models' => $this->models
+            ]); ?>
+        </div>
+    </div>
+
+<?php $this->inlineScript()->captureStart(); ?>
+    $(document).ready(function(){
+        $('#table-portfolio').dataGrid({
+            url : 'user/list',
+            query: { sort : 'name' },
+            searchForm : $('#search-portfolio'),
+            paging : 'links',
+            columnSort: true
+        });
+    });
+<?php $this->inlineScript()->captureEnd(); ?>
