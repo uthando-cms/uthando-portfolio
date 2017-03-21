@@ -13,13 +13,22 @@ return [
                         'label'     => 'Portfolio List',
                         'action'    => 'index',
                         'route'     => 'admin/portfolio',
-                        'resource'  => 'menu:admin'
+                        'resource'  => 'menu:admin',
+                        'visible'   => false,
                     ],
                     'add' => [
-                        'label'     => 'Add Item',
+                        'label'     => 'Add Portfolio Item',
                         'action'    => 'add',
                         'route'     => 'admin/portfolio/edit',
-                        'resource'  => 'menu:admin'
+                        'resource'  => 'menu:admin',
+                        'visible'   => false,
+                    ],
+                    'edit' => [
+                        'label'     => 'Edit Portfolio Item',
+                        'action'    => 'edit',
+                        'route'     => 'admin/portfolio/edit',
+                        'resource'  => 'menu:admin',
+                        'visible'   => false,
                     ],
                 ],
                 'route'     => 'admin/portfolio',
