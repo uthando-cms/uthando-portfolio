@@ -16,7 +16,6 @@ return [
                                 '__NAMESPACE__' => 'UthandoPortfolio\Controller',
                                 'controller'    => 'Admin',
                                 'action'        => 'index',
-                                'force-ssl'     => 'ssl'
                             ],
                         ],
                         'may_terminate' => true,
@@ -31,7 +30,6 @@ return [
                                     ],
                                     'defaults'      => [
                                         'action'        => 'edit',
-                                        'force-ssl'     => 'ssl'
                                     ],
                                 ],
                                 'may_terminate' => true,
@@ -46,7 +44,6 @@ return [
                                     'defaults'      => [
                                         'action'        => 'list',
                                         'page'          => 1,
-                                        'force-ssl'     => 'ssl'
                                     ],
                                 ],
                                 'may_terminate' => true,
