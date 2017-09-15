@@ -14,7 +14,6 @@ return [
                         'action'    => 'index',
                         'route'     => 'admin/portfolio',
                         'resource'  => 'menu:admin',
-                        'visible'   => false,
                     ],
                     'add' => [
                         'label'     => 'Add Portfolio Item',
@@ -29,6 +28,27 @@ return [
                         'route'     => 'admin/portfolio/edit',
                         'resource'  => 'menu:admin',
                         'visible'   => false,
+                    ],
+                    'tag' => [
+                        'label' => 'Tags',
+                        'route' => 'admin/portfolio/tag',
+                        'resource' => 'menu:admin',
+                        'pages' => [
+                            'add' => [
+                                'label'     => 'Add Tag',
+                                'action'    => 'add',
+                                'route'     => 'admin/blog/tag/edit',
+                                'resource'  => 'menu:admin',
+                                'visible' => false,
+                            ],
+                            'edit' => [
+                                'label'     => 'Edit Tag',
+                                'action'    => 'edit',
+                                'route'     => 'admin/blog/tag/edit',
+                                'resource'  => 'menu:admin',
+                                'visible' => false,
+                            ],
+                        ],
                     ],
                 ],
                 'route'     => 'admin/portfolio',

@@ -32,8 +32,8 @@
 <?php $this->inlineScript()->captureStart(); ?>
     $(document).ready(function(){
         $('#table-portfolio').dataGrid({
-            url : 'user/list',
-            query: { sort : 'name' },
+            url : 'portfolio/list',
+            query: { sort : 'portfolioId' },
             searchForm : $('#search-portfolio'),
             paging : 'links',
             columnSort: true

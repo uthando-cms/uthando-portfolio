@@ -27,10 +27,10 @@ class Portfolio extends AbstractHydrator
     {
         return [
             'portfolioId'   => $object->getPortfolioId(),
+            'label'         => $object->getLabel(),
             'image'         => $object->getImage(),
             'link'          => $object->getLink(),
             'description'   => $object->getDescription(),
-            'tags'          => $object->getTags(),
         ];
     }
 }

@@ -28,7 +28,12 @@ class Portfolio implements ModelInterface
     protected $portfolioId;
 
     /**
-     * @var image
+     * @var string
+     */
+    protected $label;
+
+    /**
+     * @var string
      */
     protected $image;
 
@@ -43,9 +48,9 @@ class Portfolio implements ModelInterface
     protected $description;
 
     /**
-     * @var string
+     * @var array
      */
-    protected $tags;
+    protected $tags = [];
 
     /**
      * @return int
@@ -66,7 +71,25 @@ class Portfolio implements ModelInterface
     }
 
     /**
-     * @return image
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
+     * @param string $label
+     * @return Portfolio
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
+        return $this;
+    }
+
+    /**
+     * @return string
      */
     public function getImage()
     {
@@ -74,7 +97,7 @@ class Portfolio implements ModelInterface
     }
 
     /**
-     * @param image $image
+     * @param string $image
      * @return $this
      */
     public function setImage($image)
@@ -120,7 +143,7 @@ class Portfolio implements ModelInterface
     }
 
     /**
-     * @return string
+     * @return array
      */
     public function getTags()
     {
@@ -128,7 +151,7 @@ class Portfolio implements ModelInterface
     }
 
     /**
-     * @param string $tags
+     * @param array $tags
      * @return $this
      */
     public function setTags($tags)

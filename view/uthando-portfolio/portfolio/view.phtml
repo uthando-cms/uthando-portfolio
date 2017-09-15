@@ -1,12 +1,18 @@
 <?php $this->headTitle('Portfolio') ?>
 
 <div class="row">
+    <div class="col-sm-12">
+        <?=$this->portfolioTags();?>
+    </div>
+</div>
+<hr>
+<div class="row">
     <?php foreach($this->models as $model):?>
     <div class="col-sm-3">
         <div class="thumbnail">
-            <img src="<?=$this->basePath('userfiles/thumbnails/' . $this->escapeHtml($model->getImage()));?>">
+            <img class="img-responsive" src="<?=$this->escapeHtml($model->getImage());?>">
             <div class="caption">
-                <h3>Thumbnail label</h3>
+                <h3><?=$this->escapeHtml($model->getLabel());?></h3>
                 <p><?=$this->escapeHtml($model->getDescription());?></p>
                 <?php if ($model->getLink()):?>
                 <p><a href="<?=$this->escapeHtml($model->getLink());?>" class="btn btn-primary" role="button">Button</a></p>

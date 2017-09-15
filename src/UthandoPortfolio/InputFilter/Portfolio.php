@@ -32,6 +32,21 @@ class Portfolio extends InputFilter
         ]);
 
         $this->add([
+            'name' => 'label',
+            'required' => false,
+            'filters' => [
+                ['name' => 'StringTrim'],
+                ['name' => 'StripTags'],
+            ],
+            'validators' => [
+                ['name'    => 'StringLength','options' => [
+                    'encoding' => 'UTF-8',
+                    'max'      => 255,
+                ]],
+            ],
+        ]);
+
+        $this->add([
             'name' => 'image',
             'required' => true,
             'filters' => [
@@ -48,21 +63,6 @@ class Portfolio extends InputFilter
 
         $this->add([
             'name' => 'link',
-            'required' => false,
-            'filters' => [
-                ['name' => 'StringTrim'],
-                ['name' => 'StripTags'],
-            ],
-            'validators' => [
-                ['name'    => 'StringLength','options' => [
-                    'encoding' => 'UTF-8',
-                    'max'      => 255,
-                ]],
-            ],
-        ]);
-
-        $this->add([
-            'name' => 'tags',
             'required' => false,
             'filters' => [
                 ['name' => 'StringTrim'],

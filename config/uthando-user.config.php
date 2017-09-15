@@ -18,6 +18,7 @@ return [
                         'allow' => [
                             'controllers' => [
                                 'UthandoPortfolio\Controller\Admin' => ['action' => 'all'],
+                                'UthandoPortfolio\Controller\Tag' => ['action' => 'all'],
                             ],
                         ],
                     ],
@@ -26,6 +27,7 @@ return [
             'resources' => [
                 'UthandoPortfolio\Controller\Admin',
                 'UthandoPortfolio\Controller\Portfolio',
+                'UthandoPortfolio\Controller\Tag',
             ],
         ],
     ],

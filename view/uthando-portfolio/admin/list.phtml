@@ -5,8 +5,8 @@
             <thead>
             <tr>
                 <th data-field="portfolioId"><?=$this->translate('Portfolio Id');?></th>
-                <th data-field="name"><?=$this->translate('image');?></th>
-                <th data-field="tags"><?=$this->translate('Tags');?></th>
+                <th data-field="label"><?=$this->translate('Label');?></th>
+                <th data-field="image"><?=$this->translate('Image');?></th>
                 <th data-field="link"><?=$this->translate('Link');?></th>
                 <th>Actions</th>
             </tr>
@@ -17,8 +17,8 @@
             <?php foreach ($this->models as $row): ?>
                 <tr>
                     <td><?= $this->escapeHtml($row->getPortfolioId()); ?></td>
+                    <td><?= $this->escapeHtml($row->getLabel()); ?></td>
                     <td><?= $this->escapeHtml($row->getImage()); ?></td>
-                    <td><?= $this->escapeHtml($row->getTags()); ?></td>
                     <td><?= $this->escapeHtml($row->getLink()); ?></td>
                     <td>
                         <?= $this->partial('uthando-admin/partial/edit-actions', [
