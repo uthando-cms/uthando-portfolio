@@ -15,7 +15,11 @@
                 <h3><?=$this->escapeHtml($model->getLabel());?></h3>
                 <p><?=$this->escapeHtml($model->getDescription());?></p>
                 <?php if ($model->getLink()):?>
-                <p><a href="<?=$this->escapeHtml($model->getLink());?>" class="btn btn-primary" role="button">Button</a></p>
+                <p>
+                    <a href="<?=$this->escapeHtml($model->getLink());?>" class="btn btn-primary" role="button">
+                        Visit
+                    </a>
+                </p>
                 <?php endif;?>
             </div>
         </div>
