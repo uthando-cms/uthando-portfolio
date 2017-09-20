@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2017 at 09:50 PM
+-- Generation Time: Sep 20, 2017 at 03:14 PM
 -- Server version: 5.7.19-0ubuntu0.16.04.1
 -- PHP Version: 7.1.9
 
@@ -40,7 +40,7 @@ CREATE TABLE `portfolio` (
 
 DROP TABLE IF EXISTS `portfolioTag`;
 CREATE TABLE `portfolioTag` (
-  `tagId` int(11) NOT NULL,
+  `portfolioTagId` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -52,9 +52,9 @@ CREATE TABLE `portfolioTag` (
 
 DROP TABLE IF EXISTS `portfolioTagMap`;
 CREATE TABLE `portfolioTagMap` (
-  `postTagId` int(11) NOT NULL,
-  `portfolioId` int(11) NOT NULL,
-  `tagId` int(11) NOT NULL
+  `portfolioTagMapId` int(11) UNSIGNED NOT NULL,
+  `portfolioId` int(11) UNSIGNED NOT NULL,
+  `portfolioTagId` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -71,16 +71,16 @@ ALTER TABLE `portfolio`
 -- Indexes for table `portfolioTag`
 --
 ALTER TABLE `portfolioTag`
-  ADD PRIMARY KEY (`tagId`),
+  ADD PRIMARY KEY (`portfolioTagId`),
   ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `portfolioTagMap`
 --
 ALTER TABLE `portfolioTagMap`
-  ADD PRIMARY KEY (`postTagId`),
+  ADD PRIMARY KEY (`portfolioTagMapId`),
   ADD KEY `postId` (`portfolioId`),
-  ADD KEY `tagId` (`tagId`);
+  ADD KEY `tagId` (`portfolioTagId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -95,11 +95,21 @@ ALTER TABLE `portfolio`
 -- AUTO_INCREMENT for table `portfolioTag`
 --
 ALTER TABLE `portfolioTag`
-  MODIFY `tagId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `portfolioTagId` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `portfolioTagMap`
 --
 ALTER TABLE `portfolioTagMap`
-  MODIFY `postTagId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;SET FOREIGN_KEY_CHECKS=1;
-COMMIT;
+  MODIFY `portfolioTagMapId` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- Constraints for dumped tables
+--
 
+--
+-- Constraints for table `portfolioTagMap`
+--
+ALTER TABLE `portfolioTagMap`
+  ADD CONSTRAINT `portfolioTagMap_ibfk_1` FOREIGN KEY (`portfolioId`) REFERENCES `portfolio` (`portfolioId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `portfolioTagMap_ibfk_2` FOREIGN KEY (`portfolioTagId`) REFERENCES `portfolioTag` (`portfolioTagId`) ON DELETE CASCADE ON UPDATE CASCADE;
+SET FOREIGN_KEY_CHECKS=1;
+COMMIT;

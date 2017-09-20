@@ -53,19 +53,6 @@ class Portfolio extends AbstractRelationalMapperService
         $this->getEventManager()->attach([
             'post.add', 'post.edit'
         ], [$this, 'saveTags']);
-
-        $this->getEventManager()->attach([
-            'post.delete'
-        ], [$this, 'removePortfolioTag']);
-    }
-
-    public function removePortfolioTag(Event $e)
-    {
-        $id = $e->getParam('id');
-
-        $where = new Where();
-        $where->equalTo('portfolioId', $id);
-        $this->getMapper()->delete($where, 'portfolioTagMap');
     }
 
     public function setTagsArray(Event $e)
@@ -99,7 +86,7 @@ class Portfolio extends AbstractRelationalMapperService
         $model      = $e->getParam('model', new PortfolioModel());
         $post       = $e->getParam('post');
         $saved      = $e->getParam('saved');
-        $tags       = $model->getTags();
+        $tags       = $post['tags'];
 
         /* @var Tag $tagService */
         $tagService = $this->getRelatedService('tags');

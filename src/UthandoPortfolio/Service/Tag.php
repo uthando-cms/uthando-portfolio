@@ -29,19 +29,6 @@ class Tag extends AbstractMapperService
         $this->getEventManager()->attach([
             'pre.add', 'pre.edit'
         ], [$this, 'checkName']);
-
-        $this->getEventManager()->attach([
-            'post.delete'
-        ], [$this, 'removePortfolioTag']);
-    }
-
-    public function removePortfolioTag(Event $e)
-    {
-        $id = $e->getParam('id');
-
-        $where = new Where();
-        $where->equalTo('tagId', $id);
-        $this->getMapper()->delete($where, 'portfolioTagMap');
     }
 
     public function checkName(Event $e)
