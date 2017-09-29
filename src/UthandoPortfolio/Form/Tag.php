@@ -42,7 +42,7 @@ class Tag extends Form
         ]);
 
         $this->add([
-            'name' => 'tagId',
+            'name' => 'portfolioTagId',
             'type' => Hidden::class,
         ]);
 

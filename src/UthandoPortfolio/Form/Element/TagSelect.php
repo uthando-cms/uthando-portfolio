@@ -41,7 +41,7 @@ class TagSelect extends Select implements ServiceLocatorAwareInterface
 
         /* @var $tag \UthandoPortfolio\Model\Tag*/
         foreach($tags as $tag) {
-            $tagOptions[$tag->getTagId()] = $tag->getName();
+            $tagOptions[$tag->getPortfolioTagId()] = $tag->getName();
         }
 
         $this->setValueOptions($tagOptions);

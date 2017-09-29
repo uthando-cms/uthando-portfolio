@@ -26,8 +26,8 @@ class Tag extends AbstractHydrator
     public function extract($object)
     {
         return [
-            'tagId' => $object->getTagId(),
-            'name'   => $object->getName(),
+            'portfolioTagId'    => $object->getPortfolioTagId(),
+            'name'              => $object->getName(),
         ];
     }
 }

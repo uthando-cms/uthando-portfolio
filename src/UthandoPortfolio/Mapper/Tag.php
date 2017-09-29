@@ -20,7 +20,7 @@ use Zend\Db\Sql\Select;
 class Tag extends AbstractDbMapper
 {
     protected $table = 'portfolioTag';
-    protected  $primary = 'tagId';
+    protected  $primary = 'portfolioTagId';
 
     /**
      * @param $id
@@ -32,10 +32,12 @@ class Tag extends AbstractDbMapper
         $select = $this->getSelect();
         $select->join(
             'portfolioTagMap',
-            'portfolioTag.tagId=portfolioTagMap.tagId',
+            'portfolioTag.portfolioTagId=portfolioTagMap.portfolioTagId',
             [],
             Select::JOIN_LEFT
         )->where->equalTo('portfolioTagMap.portfolioId', $id);
+
+        $this->getSqlString($select);
 
         return $this->fetchResult($select);
     }

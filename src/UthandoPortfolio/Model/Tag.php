@@ -25,7 +25,7 @@ class Tag implements ModelInterface
     /**
      * @var int
      */
-    protected $tagId;
+    protected $portfolioTagId;
 
     /**
      * @var string
@@ -35,18 +35,18 @@ class Tag implements ModelInterface
     /**
      * @return int
      */
-    public function getTagId()
+    public function getPortfolioTagId()
     {
-        return $this->tagId;
+        return $this->portfolioTagId;
     }
 
     /**
-     * @param int $tagId
+     * @param int $portfolioTagId
      * @return Tag
      */
-    public function setTagId($tagId)
+    public function setPortfolioTagId($portfolioTagId)
     {
-        $this->tagId = $tagId;
+        $this->portfolioTagId = $portfolioTagId;
         return $this;
     }
 

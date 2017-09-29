@@ -14,7 +14,7 @@ use UthandoCommon\Controller\AbstractCrudController;
 
 class Tag extends AbstractCrudController
 {
-    protected $controllerSearchOverrides = ['sort' => 'tagId'];
+    protected $controllerSearchOverrides = ['sort' => 'portfolioTagId'];
     protected $serviceName = 'UthandoPortfolioTag';
     protected $route = 'admin/portfolio/tag';
     protected $routes = [];

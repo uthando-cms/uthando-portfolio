@@ -29,7 +29,7 @@ class Tag extends InputFilter implements ServiceLocatorAwareInterface
     public function init()
     {
         $this->add([
-            'name' => 'tagId',
+            'name' => 'portfolioTagId',
             'required' => false,
             'filters' => [
                 ['name' => StringTrim::class],

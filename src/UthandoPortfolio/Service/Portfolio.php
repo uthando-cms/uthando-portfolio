@@ -69,7 +69,7 @@ class Portfolio extends AbstractRelationalMapperService
 
         foreach ($tags as $tag) {
             if ($tag instanceof TagModel) {
-                $tagsArray[] = $tag->getTagId();
+                $tagsArray[] = $tag->getPortfolioTagId();
             } else {
                 $tagsArray[] = $tag;
             }
@@ -99,13 +99,13 @@ class Portfolio extends AbstractRelationalMapperService
 
         /* @var TagModel $tag */
         foreach ($currentTags as $tag) {
-            if (!in_array($tag->getTagId(), $tags)) {
+            if (!in_array($tag->getPortfolioTagId(), $tags)) {
                 $where = new Where();
-                $where->equalTo('tagId', $tag->getTagId())
+                $where->equalTo('tagId', $tag->getPortfolioTagId())
                     ->and->equalTo('portfolioId', $id);
                 $mapper->delete($where, 'portfolioTagMap');
             } else {
-                $keptTags[] = $tag->getTagId();
+                $keptTags[] = $tag->getPortfolioTagId();
             }
         }
 
