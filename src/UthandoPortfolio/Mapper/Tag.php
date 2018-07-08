@@ -37,8 +37,6 @@ class Tag extends AbstractDbMapper
             Select::JOIN_LEFT
         )->where->equalTo('portfolioTagMap.portfolioId', $id);
 
-        $this->getSqlString($select);
-
         return $this->fetchResult($select);
     }
 

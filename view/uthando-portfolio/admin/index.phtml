@@ -28,7 +28,8 @@
         </div>
     </div>
 
-<?php $this->inlineScript()->captureStart(); ?>
+<?php $this->placeholder('js-scripts')->captureStart();?>
+<script>
     $(document).ready(function(){
         $('#table-portfolio').dataGrid({
             url : 'portfolio/list',
@@ -38,4 +39,5 @@
             columnSort: true
         });
     });
-<?php $this->inlineScript()->captureEnd(); ?>
+</script>
+<?php $this->placeholder('js-scripts')->captureEnd();?>
