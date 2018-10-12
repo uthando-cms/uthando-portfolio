@@ -145,4 +145,10 @@ class Portfolio extends AbstractRelationalMapperService
 
         return $model;
     }
+
+    public function getPortfolioIdByTag($tag)
+    {
+        $models = $this->getMapper()->getPortfolioIdByTag($tag);
+        return $models;
+    }
 }

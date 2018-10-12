@@ -1,5 +1,6 @@
 <?php
 
+use UthandoPortfolio\View\Helper\Portfolio;
 use UthandoPortfolio\View\Helper\Tags;
 use UthandoPortfolio\Form\Element\TagSelect;
 
@@ -51,6 +52,7 @@ return [
     ],
     'view_helpers' => [
         'invokables' => [
+            'Portfolio'     => Portfolio::class,
             'PortfolioTags' => Tags::class,
         ],
     ],
