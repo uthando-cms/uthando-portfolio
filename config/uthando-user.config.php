@@ -1,5 +1,9 @@
 <?php
 
+use UthandoPortfolio\Controller\AdminController;
+use UthandoPortfolio\Controller\PortfolioController;
+use UthandoPortfolio\Controller\TagController;
+
 return [
     'uthando_user' => [
         'acl' => [
@@ -8,7 +12,7 @@ return [
                     'privileges' => [
                         'allow' => [
                             'controllers' => [
-                                'UthandoPortfolio\Controller\Portfolio' => ['action' => ['view']],
+                                PortfolioController::class => ['action' => ['view']],
                             ],
                         ],
                     ],
@@ -17,17 +21,17 @@ return [
                     'privileges' => [
                         'allow' => [
                             'controllers' => [
-                                'UthandoPortfolio\Controller\Admin' => ['action' => 'all'],
-                                'UthandoPortfolio\Controller\Tag' => ['action' => 'all'],
+                                AdminController::class => ['action' => 'all'],
+                                TagController::class => ['action' => 'all'],
                             ],
                         ],
                     ],
                 ],
             ],
             'resources' => [
-                'UthandoPortfolio\Controller\Admin',
-                'UthandoPortfolio\Controller\Portfolio',
-                'UthandoPortfolio\Controller\Tag',
+                AdminController::class,
+                PortfolioController::class,
+                TagController::class,
             ],
         ],
     ],

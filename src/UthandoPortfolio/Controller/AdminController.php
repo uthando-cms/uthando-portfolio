@@ -8,18 +8,19 @@
  * @license   see LICENSE
  */
 
-namespace UthandoPortfolio\Mvc\Controller;
+namespace UthandoPortfolio\Controller;
 
 use UthandoCommon\Controller\AbstractCrudController;
+use UthandoPortfolio\Service\PortfolioService;
 
 /**
  * Class Admin
  *
  * @package UthandoPortfolio\Mvc\Controller
  */
-class Admin extends AbstractCrudController
+class AdminController extends AbstractCrudController
 {
     protected $controllerSearchOverrides = ['sort' => 'portfolioId'];
-    protected $serviceName = 'UthandoPortfolio';
+    protected $serviceName = PortfolioService::class;
     protected $route = 'admin/portfolio';
 }

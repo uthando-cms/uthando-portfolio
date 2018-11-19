@@ -10,14 +10,14 @@
 
 namespace UthandoPortfolio\Hydrator;
 
-use UthandoPortfolio\Model\Tag as TagModel;
+use UthandoPortfolio\Model\TagModel as TagModel;
 use UthandoCommon\Hydrator\AbstractHydrator;
 
 /**
  * Class Tag
  * @package UthandoPortfolio\Hydrator
  */
-class Tag extends AbstractHydrator
+class TagHydrator extends AbstractHydrator
 {
     /**
      * @param TagModel $object

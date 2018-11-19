@@ -20,7 +20,7 @@ use Zend\Form\Form;
  * Class Tag
  * @package UthandoBlog\Form
  */
-class Tag extends Form
+class TagForm extends Form
 {
     public function init()
     {

@@ -10,6 +10,8 @@
 
 namespace UthandoPortfolio\Form\Element;
 
+use UthandoCommon\Service\ServiceManager;
+use UthandoPortfolio\Service\TagService;
 use Zend\Form\Element\Select;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorAwareTrait;
@@ -33,13 +35,13 @@ class TagSelect extends Select implements ServiceLocatorAwareInterface
     {
         $tags = $this->getServiceLocator()
             ->getServiceLocator()
-            ->get('UthandoServiceManager')
-            ->get('UthandoPortfolioTag')
+            ->get(ServiceManager::class)
+            ->get(TagService::class)
             ->fetchAll();
 
         $tagOptions = [];
 
-        /* @var $tag \UthandoPortfolio\Model\Tag*/
+        /* @var $tag \UthandoPortfolio\Model\TagModel*/
         foreach($tags as $tag) {
             $tagOptions[$tag->getPortfolioTagId()] = $tag->getName();
         }

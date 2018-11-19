@@ -17,7 +17,7 @@ use Zend\Db\Sql\Select;
  * Class Tag
  * @package UthandoPortfolio\Mapper
  */
-class Tag extends AbstractDbMapper
+class TagMapper extends AbstractDbMapper
 {
     protected $table = 'portfolioTag';
     protected  $primary = 'portfolioTagId';

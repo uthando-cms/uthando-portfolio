@@ -1,5 +1,8 @@
 <?php
 
+use UthandoPortfolio\Controller\AdminController;
+use UthandoPortfolio\Controller\TagController;
+
 return [
     'router' => [
         'routes' => [
@@ -14,7 +17,7 @@ return [
                             ],
                             'defaults' => [
                                 '__NAMESPACE__' => 'UthandoPortfolio\Controller',
-                                'controller'    => 'Admin',
+                                'controller'    => AdminController::class,
                                 'action'        => 'index',
                             ],
                         ],
@@ -53,7 +56,7 @@ return [
                                 'options' => [
                                     'route' => '/tag',
                                     'defaults' => [
-                                        'controller' => 'Tag',
+                                        'controller' => TagController::class,
                                         'action' => 'index',
                                     ]
                                 ],

@@ -22,7 +22,7 @@ use Zend\Validator\StringLength;
  * Class Tag
  * @package UthandoPortfolio\InputFilter
  */
-class Tag extends InputFilter implements ServiceLocatorAwareInterface
+class TagInputFilter extends InputFilter implements ServiceLocatorAwareInterface
 {
     use ServiceLocatorAwareTrait;
 

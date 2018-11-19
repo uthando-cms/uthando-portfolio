@@ -17,10 +17,10 @@ use UthandoCommon\Hydrator\AbstractHydrator;
  *
  * @package UthandoPortfolio\Hydrator
  */
-class Portfolio extends AbstractHydrator
+class PortfolioHydrator extends AbstractHydrator
 {
     /**
-     * @param \UthandoPortfolio\Model\Portfolio object
+     * @param \UthandoPortfolio\Model\PortfolioModel object
      * @return array
      */
     public function extract($object)

@@ -18,7 +18,7 @@ use UthandoCommon\Model\ModelInterface;
  *
  * @package UthandoBlog\Model
  */
-class Tag implements ModelInterface
+class TagModel implements ModelInterface
 {
     use Model;
 
@@ -42,7 +42,7 @@ class Tag implements ModelInterface
 
     /**
      * @param int $portfolioTagId
-     * @return Tag
+     * @return TagModel
      */
     public function setPortfolioTagId($portfolioTagId)
     {
@@ -60,7 +60,7 @@ class Tag implements ModelInterface
 
     /**
      * @param string $name
-     * @return Tag
+     * @return TagModel
      */
     public function setName($name)
     {

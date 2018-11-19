@@ -11,12 +11,14 @@
 namespace UthandoPortfolio\View\Helper;
 
 
+use UthandoCommon\Service\ServiceManager;
 use UthandoCommon\View\AbstractViewHelper;
+use UthandoPortfolio\Service\PortfolioService;
 
 class Portfolio extends AbstractViewHelper
 {
     /**
-     * @var \UthandoPortfolio\Service\Portfolio
+     * @var \UthandoPortfolio\Service\PortfolioService
      */
     protected $service;
 
@@ -27,7 +29,7 @@ class Portfolio extends AbstractViewHelper
     }
 
     /**
-     * @return \UthandoPortfolio\Service\Portfolio
+     * @return \UthandoPortfolio\Service\PortfolioService
      */
     public function getService()
     {
@@ -35,8 +37,8 @@ class Portfolio extends AbstractViewHelper
 
             $service = $this->getServiceLocator()
                 ->getServiceLocator()
-                ->get('UthandoServiceManager')
-                ->get('UthandoPortfolio');
+                ->get(ServiceManager::class)
+                ->get(PortfolioService::class);
             $this->setService($service);
         }
 
@@ -44,10 +46,10 @@ class Portfolio extends AbstractViewHelper
     }
 
     /**
-     * @param \UthandoPortfolio\Service\Portfolio $service
+     * @param \UthandoPortfolio\Service\PortfolioService $service
      * @return $this
      */
-    public function setService(\UthandoPortfolio\Service\Portfolio $service)
+    public function setService(\UthandoPortfolio\Service\PortfolioService $service)
     {
         $this->service = $service;
         return $this;

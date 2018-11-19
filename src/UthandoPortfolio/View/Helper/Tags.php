@@ -10,8 +10,9 @@
 
 namespace UthandoPortfolio\View\Helper;
 
-use UthandoPortfolio\Model\Tag as TagModel;
-use UthandoPortfolio\Service\Tag as TagService;
+use UthandoCommon\Service\ServiceManager;
+use UthandoPortfolio\Model\TagModel as TagModel;
+use UthandoPortfolio\Service\TagService as TagService;
 use UthandoCommon\View\AbstractViewHelper;
 
 /**
@@ -49,8 +50,8 @@ class Tags extends AbstractViewHelper
 
             $service = $this->getServiceLocator()
                 ->getServiceLocator()
-                ->get('UthandoServiceManager')
-                ->get('UthandoPortfolioTag');
+                ->get(ServiceManager::class)
+                ->get(TagService::class);
             $this->setService($service);
         }
 

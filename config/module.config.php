@@ -1,60 +1,36 @@
 <?php
 
+use UthandoPortfolio\Controller\AdminController;
+use UthandoPortfolio\Controller\PortfolioController;
+use UthandoPortfolio\Controller\TagController;
+use UthandoPortfolio\Service\PortfolioService;
+use UthandoPortfolio\Service\TagService;
 use UthandoPortfolio\View\Helper\Portfolio;
 use UthandoPortfolio\View\Helper\Tags;
-use UthandoPortfolio\Form\Element\TagSelect;
 
 return [
     'controllers' => [
         'invokables' => [
-            'UthandoPortfolio\Controller\Admin'     => 'UthandoPortfolio\Mvc\Controller\Admin',
-            'UthandoPortfolio\Controller\Portfolio' => 'UthandoPortfolio\Mvc\Controller\Portfolio',
-            'UthandoPortfolio\Controller\Tag'       => 'UthandoPortfolio\Mvc\Controller\Tag',
+            AdminController::class      => AdminController::class,
+            PortfolioController::class  => PortfolioController::class,
+            TagController::class        => TagController::class
         ],
-    ],
-    'form_elements' => [
-        'invokables' => [
-            'UthandoPortfolio'      => 'UthandoPortfolio\Form\Portfolio',
-            'UthandoPortfolioTag'   => 'UthandoPortfolio\Form\Tag',
-
-            TagSelect::class        => TagSelect::class,
-        ],
-    ],
-    'hydrators' => [
-        'invokables' => [
-            'UthandoPortfolio'      => 'UthandoPortfolio\Hydrator\Portfolio',
-            'UthandoPortfolioTag'   => 'UthandoPortfolio\Hydrator\Tag',
-        ],
-    ],
-    'input_filters' => [
-        'invokables' => [
-            'UthandoPortfolio'      => 'UthandoPortfolio\InputFilter\Portfolio',
-            'UthandoPortfolioTag'   => 'UthandoPortfolio\InputFilter\Tag',
-        ],
-    ],
-    'uthando_mappers' => [
-        'invokables' => [
-            'UthandoPortfolio'      => 'UthandoPortfolio\Mapper\Portfolio',
-            'UthandoPortfolioTag'   => 'UthandoPortfolio\Mapper\Tag',
-        ],
-    ],
-    'uthando_models' => [
-        'invokables' => [
-            'UthandoPortfolio'      => 'UthandoPortfolio\Model\Portfolio',
-            'UthandoPortfolioTag'   => 'UthandoPortfolio\Model\Tag',
-        ]
     ],
     'uthando_services' => [
         'invokables' => [
-            'UthandoPortfolio'      => 'UthandoPortfolio\Service\Portfolio',
-            'UthandoPortfolioTag'   => 'UthandoPortfolio\Service\Tag',
+            PortfolioService::class => PortfolioService::class,
+            TagService::class       => TagService::class,
         ],
     ],
     'view_helpers' => [
-        'invokables' => [
+        'aliases' => [
             'Portfolio'     => Portfolio::class,
             'PortfolioTags' => Tags::class,
         ],
+        'invokables' => [
+            Portfolio::class    => Portfolio::class,
+            Tags::class         => Tags::class,
+        ]
     ],
     'view_manager' => [
         'template_map' => include __DIR__ . '/../template_map.php'
@@ -67,7 +43,7 @@ return [
                     'route' => '/portfolio',
                     'defaults' => [
                         '__NAMESPACE__' => 'UthandoPortfolio\Controller',
-                        'controller'    => 'Portfolio',
+                        'controller'    => PortfolioController::class,
                         'action'        => 'view',
                     ],
                 ],

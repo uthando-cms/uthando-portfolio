@@ -8,9 +8,11 @@
  * @license   see LICENSE
  */
 
-namespace UthandoPortfolio\Mvc\Controller;
+namespace UthandoPortfolio\Controller;
 
+use UthandoCommon\Service\ServiceManager;
 use UthandoCommon\Service\ServiceTrait;
+use UthandoPortfolio\Service\PortfolioService;
 use Zend\Mvc\Controller\AbstractActionController;
 
 /**
@@ -18,15 +20,15 @@ use Zend\Mvc\Controller\AbstractActionController;
  *
  * @package UthandoPortfolio\Mvc\Controller
  */
-class Portfolio extends AbstractActionController
+class PortfolioController extends AbstractActionController
 {
     use ServiceTrait;
 
     public function viewAction()
     {
-        /* @var \UthandoPortfolio\Service\Portfolio $service */
-        $service = $this->getService('UthandoServiceManager')
-            ->get('UthandoPortfolio');
+        /* @var \UthandoPortfolio\Service\PortfolioService $service */
+        $service = $this->getService(ServiceManager::class)
+            ->get(PortfolioService::class);
 
         $models = $service->fetchAll();
 

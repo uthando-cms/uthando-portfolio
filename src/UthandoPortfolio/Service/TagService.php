@@ -11,8 +11,11 @@
 namespace UthandoPortfolio\Service;
 
 use UthandoCommon\Service\AbstractMapperService;
-use UthandoPortfolio\Mapper\Tag as TagMapper;
-use UthandoPortfolio\Model\Tag as TagModel;
+use UthandoPortfolio\Form\TagForm;
+use UthandoPortfolio\Hydrator\TagHydrator;
+use UthandoPortfolio\InputFilter\TagInputFilter;
+use UthandoPortfolio\Mapper\TagMapper;
+use UthandoPortfolio\Model\TagModel;
 use Zend\EventManager\Event;
 
 /**
@@ -20,9 +23,13 @@ use Zend\EventManager\Event;
  * @package UthandoPortfolio\Service
  * @method TagMapper getMapper($mapperClass = null, array $options = [])
  */
-class Tag extends AbstractMapperService
+class TagService extends AbstractMapperService
 {
-    protected $serviceAlias = 'UthandoPortfolioTag';
+    protected $form         = TagForm::class;
+    protected $hydrator     = TagHydrator::class;
+    protected $inputFilter  = TagInputFilter::class;
+    protected $mapper       = TagMapper::class;
+    protected $model        = TagModel::class;
 
     public function attachEvents()
     {
@@ -41,7 +48,7 @@ class Tag extends AbstractMapperService
             return;
         }
 
-        /* @var \UthandoPortfolio\InputFilter\Tag $inputFilter */
+        /* @var \UthandoPortfolio\InputFilter\TagInputFilter $inputFilter */
         $inputFilter = $form->getInputFilter();
         $inputFilter->addNameNoRecordExists($model->getName());
 

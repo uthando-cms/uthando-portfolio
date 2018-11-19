@@ -13,6 +13,10 @@ namespace UthandoPortfolio\Form;
 use TwbBundle\Form\View\Helper\TwbBundleForm;
 use UthandoPortfolio\Form\Element\TagSelect;
 use Zend\Form\Element\Button;
+use Zend\Form\Element\Csrf;
+use Zend\Form\Element\Hidden;
+use Zend\Form\Element\Text;
+use Zend\Form\Element\Textarea;
 use Zend\Form\Form;
 
 /**
@@ -20,7 +24,7 @@ use Zend\Form\Form;
  *
  * @package UthandoPortfolio\Form
  */
-class Portfolio extends Form
+class PortfolioForm extends Form
 {
     /**
      * Set up form elements
@@ -29,7 +33,7 @@ class Portfolio extends Form
     {
         $this->add([
             'name' => 'label',
-            'type' => 'text',
+            'type' => Text::class,
             'attributes' => [
                 'placeholder' => 'Label',
             ],
@@ -45,7 +49,7 @@ class Portfolio extends Form
 
         $this->add([
             'name' => 'image',
-            'type' => 'text',
+            'type' => Text::class,
             'attributes' => [
                 'placeholder' => 'Image',
                 'id' => 'portfolio-image',
@@ -65,7 +69,7 @@ class Portfolio extends Form
 
         $this->add([
             'name' => 'link',
-            'type' => 'text',
+            'type' => Text::class,
             'attributes' => [
                 'placeholder' => 'Link',
             ],
@@ -104,7 +108,7 @@ class Portfolio extends Form
 
         $this->add([
             'name' => 'description',
-            'type' => 'textarea',
+            'type' => Textarea::class,
             'attributes' => [
                 'placeholder' => 'Description',
             ],
@@ -120,12 +124,12 @@ class Portfolio extends Form
 
         $this->add([
             'name' => 'portfolioId',
-            'type' => 'hidden',
+            'type' => Hidden::class,
         ]);
 
         $this->add([
             'name' => 'security',
-            'type' => 'csrf',
+            'type' => Csrf::class,
         ]);
     }
 }

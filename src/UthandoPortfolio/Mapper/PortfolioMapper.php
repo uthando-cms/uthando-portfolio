@@ -18,7 +18,7 @@ use Zend\Db\Sql\Select;
  *
  * @package UthandoPortfolio\Mapper
  */
-class Portfolio extends AbstractDbMapper
+class PortfolioMapper extends AbstractDbMapper
 {
     protected $table = 'portfolio';
     protected $primary = 'portfolioId';

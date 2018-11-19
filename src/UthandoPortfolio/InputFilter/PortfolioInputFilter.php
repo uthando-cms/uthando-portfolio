@@ -10,14 +10,18 @@
 
 namespace UthandoPortfolio\InputFilter;
 
+use Zend\Filter\Digits;
+use Zend\Filter\StringTrim;
+use Zend\Filter\StripTags;
 use Zend\InputFilter\InputFilter;
+use Zend\Validator\StringLength;
 
 /**
  * Class Portfolio
  *
  * @package UthandoPortfolio\InputFilter
  */
-class Portfolio extends InputFilter
+class PortfolioInputFilter extends InputFilter
 {
     public function init()
     {
@@ -25,9 +29,9 @@ class Portfolio extends InputFilter
             'name' => 'portfolioId',
             'required' => false,
             'filters' => [
-                ['name' => 'StringTrim'],
-                ['name' => 'StripTags'],
-                ['name' => 'Digits'],
+                ['name' => StringTrim::class],
+                ['name' => StripTags::class],
+                ['name' => Digits::class],
             ],
         ]);
 
@@ -35,11 +39,11 @@ class Portfolio extends InputFilter
             'name' => 'label',
             'required' => false,
             'filters' => [
-                ['name' => 'StringTrim'],
-                ['name' => 'StripTags'],
+                ['name' => StringTrim::class],
+                ['name' => StripTags::class],
             ],
             'validators' => [
-                ['name'    => 'StringLength','options' => [
+                ['name'    => StringLength::class,'options' => [
                     'encoding' => 'UTF-8',
                     'max'      => 255,
                 ]],
@@ -50,11 +54,11 @@ class Portfolio extends InputFilter
             'name' => 'image',
             'required' => true,
             'filters' => [
-                ['name' => 'StringTrim'],
-                ['name' => 'StripTags'],
+                ['name' => StringTrim::class],
+                ['name' => StripTags::class],
             ],
             'validators' => [
-                ['name'    => 'StringLength','options' => [
+                ['name'    => StringLength::class,'options' => [
                     'encoding' => 'UTF-8',
                     'max'      => 255,
                 ]],
@@ -65,11 +69,11 @@ class Portfolio extends InputFilter
             'name' => 'link',
             'required' => false,
             'filters' => [
-                ['name' => 'StringTrim'],
-                ['name' => 'StripTags'],
+                ['name' => StringTrim::class],
+                ['name' => StripTags::class],
             ],
             'validators' => [
-                ['name'    => 'StringLength','options' => [
+                ['name'    => StringLength::class,'options' => [
                     'encoding' => 'UTF-8',
                     'max'      => 255,
                 ]],
@@ -80,8 +84,8 @@ class Portfolio extends InputFilter
             'name' => 'decription',
             'required' => false,
             'filters' => [
-                ['name' => 'StringTrim'],
-                ['name' => 'StripTags'],
+                ['name' => StringTrim::class],
+                ['name' => StripTags::class],
             ],
         ]);
     }

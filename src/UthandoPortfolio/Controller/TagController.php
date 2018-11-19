@@ -8,14 +8,15 @@
  * @license     see LICENSE
  */
 
-namespace UthandoPortfolio\Mvc\Controller;
+namespace UthandoPortfolio\Controller;
 
 use UthandoCommon\Controller\AbstractCrudController;
+use UthandoPortfolio\Service\TagService;
 
-class Tag extends AbstractCrudController
+class TagController extends AbstractCrudController
 {
     protected $controllerSearchOverrides = ['sort' => 'portfolioTagId'];
-    protected $serviceName = 'UthandoPortfolioTag';
+    protected $serviceName = TagService::class;
     protected $route = 'admin/portfolio/tag';
     protected $routes = [];
 }

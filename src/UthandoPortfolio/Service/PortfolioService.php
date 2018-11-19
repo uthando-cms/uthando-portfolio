@@ -11,9 +11,12 @@
 namespace UthandoPortfolio\Service;
 
 use UthandoCommon\Service\AbstractRelationalMapperService;
-use UthandoPortfolio\Model\Portfolio as PortfolioModel;
-use UthandoPortfolio\Model\Tag as TagModel;
-use UthandoPortfolio\Service\Tag;
+use UthandoPortfolio\Form\PortfolioForm;
+use UthandoPortfolio\Hydrator\PortfolioHydrator;
+use UthandoPortfolio\InputFilter\PortfolioInputFilter;
+use UthandoPortfolio\Mapper\PortfolioMapper;
+use UthandoPortfolio\Model\PortfolioModel;
+use UthandoPortfolio\Model\TagModel;
 use Zend\Db\Sql\Where;
 use Zend\EventManager\Event;
 
@@ -22,17 +25,18 @@ use Zend\EventManager\Event;
  *
  * @package UthandoPortfolio\Service
  */
-class Portfolio extends AbstractRelationalMapperService
+class PortfolioService extends AbstractRelationalMapperService
 {
-    /**
-     * @var string
-     */
-    protected $serviceAlias = 'UthandoPortfolio';
+    protected $form         = PortfolioForm::class;
+    protected $hydrator     = PortfolioHydrator::class;
+    protected $inputFilter  = PortfolioInputFilter::class;
+    protected $mapper       = PortfolioMapper::class;
+    protected $model        = PortfolioModel::class;
 
     protected $referenceMap = [
         'tags' => [
             'refCol' => 'portfolioId',
-            'service' => 'UthandoPortfolioTag',
+            'service' => TagService::class,
             'getMethod' => 'getTagsByPortfolioId'
         ],
     ];
@@ -88,7 +92,7 @@ class Portfolio extends AbstractRelationalMapperService
         $saved      = $e->getParam('saved');
         $tags       = $post['tags'];
 
-        /* @var Tag $tagService */
+        /* @var TagService $tagService */
         $tagService = $this->getRelatedService('tags');
         $mapper     = $tagService->getMapper();
 

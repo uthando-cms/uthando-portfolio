@@ -18,7 +18,7 @@ use UthandoCommon\Model\ModelInterface;
  *
  * @package UthandoPortfolio\Model
  */
-class Portfolio implements ModelInterface
+class PortfolioModel implements ModelInterface
 {
     use Model;
 
@@ -80,7 +80,7 @@ class Portfolio implements ModelInterface
 
     /**
      * @param string $label
-     * @return Portfolio
+     * @return PortfolioModel
      */
     public function setLabel($label)
     {
